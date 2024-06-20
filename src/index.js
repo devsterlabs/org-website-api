@@ -6,7 +6,7 @@ require("dotenv").config({ path: path.join(__dirname, "../.env") });
 const PORT = process.env.PORT || 4000;
 const db = require("./db");
 const { router } = require("./routes");
-const fileUpload = require('express-fileupload');
+const fileUpload = require("express-fileupload");
 
 app.use(cors());
 app.use(express.json());
@@ -18,13 +18,17 @@ app.get("/", (req, res) => {
 
 app.use("/", router);
 
-app.listen(PORT, () => {
-  console.log("Connecting to database....");
-  db.on("open", () => {
-    console.log("Database connected");
-    console.log(`Server started on port ${PORT}`);
+if (process.env.NODE_ENV === "local") {
+  app.listen(PORT, () => {
+    console.log("Connecting to database....");
+    db.on("open", () => {
+      console.log("Database connected");
+      console.log(`Server started on port ${PORT}`);
+    });
+    db.on("error", (err) => {
+      console.log(err);
+    });
   });
-  db.on("error", (err) => {
-    console.log(err);
-  });
-});
+}
+
+module.exports = app;
