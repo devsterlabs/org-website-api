@@ -1,4 +1,4 @@
-const { ClientRoute } = require("./Client");
+const { ClientRoute } = require("./client");
 const { ServicesRoute } = require("./services");
 const { ReviewsRoute } = require("./reviews");
 const { SubscribersRoute } = require("./subscribers");

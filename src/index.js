@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(fileUpload());
 
 app.get("/", (req, res) => {
-  res.status(200).send("hi");
+  res.status(200).send("Devster Labs API (V1.0)");
 });
 
 app.use("/", router);
