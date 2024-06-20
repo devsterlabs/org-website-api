@@ -1,4 +1,60 @@
-# API Endpoints Documentation
+# Devster API
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Endpoints](#endpoints)
+- [Authentication](#authentication)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/devsterlabs/org-website-api.git
+   cd org-website-api/
+   
+2.  **Install dependencies:**
+
+    ```bash
+    npm install`
+
+3.  **Configure environment variables:**
+
+    Create a `.env` file in the root directory and define environment-specific variables as needed.
+
+    ```plaintext
+    MONGO_URI=mongodb://localhost:27017/mydb
+    JWT_SECRET=your_secret_key
+
+3.  **Start the server:**
+
+    ```bash
+    npm start
+
+* * * * *
+
+Usage
+-----
+To use this API, make sure MongoDB is running locally or provide a remote MongoDB URI in the `.env` file. After cloning the repository and installing dependencies, start the server using `npm start`. Use tools like Postman to interact with the API endpoints.
+
+* * * * *
+
+Endpoints
+---------
+
+## Login Endpoints
+
+### `POST /login`
+- **Description**: Authenticate user and generate token.
+- **Controller Method**: `login` in `LoginController`.
+
+---
 
 ## Client Endpoints
 
@@ -121,3 +177,27 @@
 ### `DELETE /team/:id`
 - **Description**: Deletes a team member by ID.
 - **Controller Method**: `delete` in `TeamController`.
+
+* * * * *
+
+Authentication
+--------------
+
+
+-   **JWT Authentication**
+    -   Include a valid JWT token in the `Authorization` header for protected routes.
+
+* * * * *
+
+Technologies Used
+-----------------
+
+List of technologies/frameworks/libraries used in the project.
+
+-   Node.js
+-   Express.js
+-   MongoDB (Mongoose)
+-   bcryptjs
+-   JSON Web Tokens (JWT)
+
+* * * * *

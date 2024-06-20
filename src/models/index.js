@@ -4,4 +4,13 @@ const { ReviewModel } = require("./reviews.model");
 const { SubscriberModel } = require("./subscribers.model");
 const { FileModel } = require("./file.model");
 const { TeamModel } = require("./team.model");
-module.exports = { ServiceModel, ClientModel, ReviewModel, SubscriberModel, FileModel, TeamModel };
+const { UserModel } = require("./user.model");
+module.exports = {
+  ServiceModel,
+  ClientModel,
+  ReviewModel,
+  SubscriberModel,
+  FileModel,
+  TeamModel,
+  UserModel,
+};

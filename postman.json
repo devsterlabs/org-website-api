@@ -1,471 +1,371 @@
 {
-  "info": {
-    "_postman_id": "YOUR_POSTMAN_COLLECTION_ID",
-    "name": "API Documentation",
-    "description": "Collection of endpoints for the API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "Client Endpoints",
-      "item": [
-        {
-          "name": "Get All Clients",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/client",
-              "host": ["{{baseUrl}}"],
-              "path": ["client"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Client by Title",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/client/{title}",
-              "host": ["{{baseUrl}}"],
-              "path": ["client", "{{title}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create Client",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"John Doe\",\n  \"position\": \"CEO\",\n  \"links\": [{ \"url\": \"https://example.com\", \"site\": \"Personal Website\" }],\n  \"image\": \"614e6e06d6d3d90ec2e85c5a\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/client",
-              "host": ["{{baseUrl}}"],
-              "path": ["client"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete Client by ID",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/client/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["client", "{{id}}"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "File Endpoints",
-      "item": [
-        {
-          "name": "Get File by ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/file/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["file", "{{id}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Upload File",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "file",
-                  "type": "file",
-                  "src": "/path/to/file.jpg"
-                }
-              ]
-            },
-            "url": {
-              "raw": "{{baseUrl}}/file",
-              "host": ["{{baseUrl}}"],
-              "path": ["file"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update File by ID",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"data\": \"updated file data\",\n  \"mimetype\": \"image/jpeg\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/file/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["file", "{{id}}"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Reviews Endpoints",
-      "item": [
-        {
-          "name": "Get All Reviews",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/reviews",
-              "host": ["{{baseUrl}}"],
-              "path": ["reviews"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Review by ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/reviews/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["reviews", "{{id}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create Review",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"client_name\": \"John Doe\",\n  \"comment\": \"Great service!\",\n  \"rating\": 5,\n  \"url\": \"https://example.com/review\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/reviews",
-              "host": ["{{baseUrl}}"],
-              "path": ["reviews"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update Review by ID",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"comment\": \"Updated review comment\",\n  \"rating\": 4\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/reviews/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["reviews", "{{id}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete Review by ID",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/reviews/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["reviews", "{{id}}"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Services Endpoints",
-      "item": [
-        {
-          "name": "Get All Services",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/services",
-              "host": ["{{baseUrl}}"],
-              "path": ["services"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Service by ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/services/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["services", "{{id}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create Service",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"New Service\",\n  \"description\": \"Description of the new service.\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/services",
-              "host": ["{{baseUrl}}"],
-              "path": ["services"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update Service by ID",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"description\": \"Updated description of the service.\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/services/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["services", "{{id}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete Service by ID",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/services/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["services", "{{id}}"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Subscribers Endpoints",
-      "item": [
-        {
-          "name": "Get All Subscribers",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/subscribers",
-              "host": ["{{baseUrl}}"],
-              "path": ["subscribers"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create Subscriber",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"email\": \"john.doe@example.com\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/subscribers",
-              "host": ["{{baseUrl}}"],
-              "path": ["subscribers"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete Subscriber by ID",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/subscribers/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["subscribers", "{{id}}"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Team Endpoints",
-      "item": [
-        {
-          "name": "Get All Team Members",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/team",
-              "host": ["{{baseUrl}}"],
-              "path": ["team"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Team Member by ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/team/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["team", "{{id}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create Team Member",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"John Doe\",\n  \"position\": \"CEO\",\n  \"links\": [{ \"url\": \"https://example.com\", \"site\": \"Personal Website\" }],\n  \"image\": \"614e6e06d6d3d90ec2e85c5a\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/team",
-              "host": ["{{baseUrl}}"],
-              "path": ["team"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update Team Member by ID",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"position\": \"Updated Position\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/team/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["team", "{{id}}"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete Team Member by ID",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{baseUrl}}/team/{id}",
-              "host": ["{{baseUrl}}"],
-              "path": ["team", "{{id}}"]
-            }
-          },
-          "response": []
-        }
-      ]
-    }
-  ]
+	"info": {
+		"name": "Express API Collection",
+		"description": "Postman collection for the Express API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Client Routes",
+			"item": [
+				{
+					"name": "Get All Clients",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/client"
+					}
+				},
+				{
+					"name": "Get Client by Title",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/client/{title}"
+					}
+				},
+				{
+					"name": "Create Client",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/client",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Client Name\",\n\t\"description\": \"Client Description\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Delete Client by ID",
+					"request": {
+						"method": "DELETE",
+						"url": "{{base_url}}/client/{id}",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "File Routes",
+			"item": [
+				{
+					"name": "Upload File",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/file",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/path/to/file"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get File by ID",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/file/{id}"
+					}
+				},
+				{
+					"name": "Update File by ID",
+					"request": {
+						"method": "PUT",
+						"url": "{{base_url}}/file/{id}",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/path/to/file"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Login Route",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/login",
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"your_username\",\n\t\"password\": \"your_password\"\n}"
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Reviews Routes",
+			"item": [
+				{
+					"name": "Get All Reviews",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/reviews"
+					}
+				},
+				{
+					"name": "Get Review by ID",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/reviews/{id}"
+					}
+				},
+				{
+					"name": "Create Review",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/reviews",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"client_name\": \"Client Name\",\n\t\"comment\": \"Review Comment\",\n\t\"rating\": 5,\n\t\"url\": \"https://example.com\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Delete Review by ID",
+					"request": {
+						"method": "DELETE",
+						"url": "{{base_url}}/reviews/{id}",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Services Routes",
+			"item": [
+				{
+					"name": "Get All Services",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/services"
+					}
+				},
+				{
+					"name": "Get Service by ID",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/services/{id}"
+					}
+				},
+				{
+					"name": "Create Service",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/services",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Service Title\",\n\t\"description\": \"Service Description\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Delete Service by ID",
+					"request": {
+						"method": "DELETE",
+						"url": "{{base_url}}/services/{id}",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Subscribers Routes",
+			"item": [
+				{
+					"name": "Get All Subscribers",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/subscribers",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							}
+						]
+					}
+				},
+				{
+					"name": "Subscribe Email",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/subscribers",
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"subscriber@example.com\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Unsubscribe by ID",
+					"request": {
+						"method": "DELETE",
+						"url": "{{base_url}}/subscribers/{id}",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Team Routes",
+			"item": [
+				{
+					"name": "Get All Team Members",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/team"
+					}
+				},
+				{
+					"name": "Get Team Member by ID",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/team/{id}"
+					}
+				},
+				{
+					"name": "Add Team Member",
+					"request": {
+						"method": "POST",
+						"url": "{{base_url}}/team",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Team Member Name\",\n\t\"position\": \"Team Member Position\",\n\t\"links\": [{\"url\": \"https://example.com\", \"site\": \"Website\"}],\n\t\"image\": \"file_id\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Update Team Member by ID",
+					"request": {
+						"method": "PUT",
+						"url": "{{base_url}}/team/{id}",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Updated Name\",\n\t\"position\": \"Updated Position\",\n\t\"links\": [{\"url\": \"https://updated.com\", \"site\": \"Updated Website\"}],\n\t\"image\": \"updated_file_id\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Delete Team Member by ID",
+					"request": {
+						"method": "DELETE",
+						"url": "{{base_url}}/team/{id}",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "JWT token obtained after login"
+							}
+						]
+					}
+				}
+			]
+		}
+	]
 }

@@ -21,12 +21,12 @@ app.use("/", router);
 if (process.env.NODE_ENV === "local") {
   app.listen(PORT, () => {
     console.log("Connecting to database....");
-    db.on("open", () => {
+    db.once("open", () => {
       console.log("Database connected");
       console.log(`Server started on port ${PORT}`);
     });
     db.on("error", (err) => {
-      console.log(err);
+      console.error(err);
     });
   });
 }
