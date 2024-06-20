@@ -27,7 +27,7 @@ class FilesController {
   async upload(req, res) {
     try {
       if (!req.files || Object.keys(req.files).length === 0) {
-        return send_response(res, { message: "No files were uploaded." }, 400);
+        return { message: "No files were uploaded." };
       }
 
       const { file } = req.files;
@@ -46,11 +46,7 @@ class FilesController {
       return { message: "File uploaded", _id: savedFile?._id };
     } catch (error) {
       console.error(error);
-      return send_response(
-        res,
-        { message: "An error occurred while uploading file." },
-        500
-      );
+      return { message: "An error occurred while uploading file." };
     }
   }
 

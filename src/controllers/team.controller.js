@@ -1,5 +1,5 @@
 const { send_response } = require("../common");
-const { TeamModel } = require("../models");
+const { TeamModel, FileModel } = require("../models");
 const { FilesController } = require("./file.controller");
 
 class TeamController {
@@ -12,19 +12,21 @@ class TeamController {
       if (!fileId) {
         return send_response(
           res,
-          { message: uploadResponse?.message || "Error while uploading image." },
+          {
+            message: uploadResponse?.message || "Error while uploading image.",
+          },
           400
         );
       }
 
       const { name, position, links } = req.body;
 
-      if(!name || !position){
+      if (!name || !position) {
         return send_response(
-            res,
-            { message: "Name and positions are required" },
-            400
-          );
+          res,
+          { message: "Name and positions are required" },
+          400
+        );
       }
 
       const newTeamMember = new TeamModel({
@@ -50,7 +52,14 @@ class TeamController {
   async getAll(req, res) {
     try {
       const teamMembers = await TeamModel.find();
-      return send_response(res, teamMembers, 200);
+      return send_response(
+        res,
+        teamMembers.map((i) => ({
+          ...i._doc,
+          image: `https://devsterapi.vercel.app/file/${i.image}`,
+        })),
+        200
+      );
     } catch (error) {
       console.error(error);
       return send_response(
@@ -71,7 +80,14 @@ class TeamController {
         return send_response(res, { message: "Team member not found." }, 404);
       }
 
-      return send_response(res, teamMember, 200);
+      return send_response(
+        res,
+        {
+          ...teamMember._doc,
+          image: `https://devsterapi.vercel.app/file/${teamMember.image}`,
+        },
+        200
+      );
     } catch (error) {
       console.error(error);
       return send_response(
@@ -86,16 +102,38 @@ class TeamController {
     try {
       const { id } = req.params;
       const { name, position, links } = req.body;
+      let fileId;
+      if (req.files) {
+        const filesController = new FilesController();
+        const uploadResponse = await filesController.upload(req, res);
+        fileId = uploadResponse?._id;
+
+        if (!fileId) {
+          return send_response(
+            res,
+            {
+              message:
+                uploadResponse?.message || "Error while uploading image.",
+            },
+            400
+          );
+        }
+      }
+
+      const deletedTeamMember = await TeamModel.findOne({ _id: id });
+      if (!deletedTeamMember) {
+        return send_response(res, { message: "Team member not found." }, 404);
+      }
+      if (req.files) {
+        await FileModel.deleteOne({ _id: deletedTeamMember?.image });
+      }
 
       const updatedTeamMember = await TeamModel.findByIdAndUpdate(
         id,
-        { name, position, links },
-        { new: true }
+        req.files
+          ? { name, position, links: JSON.parse(links), image: fileId }
+          : { name, position, links: JSON.parse(links) }
       );
-
-      if (!updatedTeamMember) {
-        return send_response(res, { message: "Team member not found." }, 404);
-      }
 
       return send_response(res, updatedTeamMember, 200);
     } catch (error) {
@@ -112,11 +150,14 @@ class TeamController {
     try {
       const { id } = req.params;
 
-      const deletedTeamMember = await TeamModel.findByIdAndDelete(id);
+      const deletedTeamMember = await TeamModel.findOne({ _id: id });
 
       if (!deletedTeamMember) {
         return send_response(res, { message: "Team member not found." }, 404);
       }
+
+      await FileModel.deleteOne({ _id: deletedTeamMember?.image });
+      await TeamModel.deleteOne({ _id: id });
 
       return send_response(
         res,
